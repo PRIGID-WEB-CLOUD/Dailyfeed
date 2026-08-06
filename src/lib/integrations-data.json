@@ -1,0 +1,123 @@
+
+[
+  {
+    "id": "twitter",
+    "name": "Twitter / X",
+    "description": "Connect your X account to automatically share new posts when they are published.",
+    "icon": "Bird",
+    "category": "Social Media",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/settings/social"
+  },
+  {
+    "id": "facebook",
+    "name": "Facebook",
+    "description": "Connect your Facebook Page to share new posts and engage with your community.",
+    "icon": "Share2",
+    "category": "Social Media",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/settings/social"
+  },
+  {
+    "id": "mailchimp",
+    "name": "Mailchimp",
+    "description": "Sync your subscribers with Mailchimp to manage email campaigns and newsletters.",
+    "icon": "Mail",
+    "category": "Marketing",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/growth/marketing"
+  },
+  {
+    "id": "google-analytics",
+    "name": "Google Analytics",
+    "description": "Integrate Google Analytics to get detailed insights into your website traffic.",
+    "icon": "BarChart3",
+    "category": "Analytics",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/analytics"
+  },
+  {
+    "id": "gen-ai-prompts",
+    "name": "Advanced AI Prompts",
+    "description": "Unlock advanced AI capabilities for content generation and SEO optimization.",
+    "icon": "Bot",
+    "category": "AI Tools",
+    "connected": true,
+    "enabled": true,
+    "managementUrl": null
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "description": "Connect Stripe to process payments for premium content and subscriptions.",
+    "icon": "CreditCard",
+    "category": "Monetization",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/monetization/payments"
+  },
+  {
+    "id": "paystack",
+    "name": "Paystack",
+    "description": "Connect Paystack to process payments for customers in Africa.",
+    "icon": "CreditCard",
+    "category": "Monetization",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/monetization/payments"
+  },
+  {
+    "id": "google-adsense",
+    "name": "Google AdSense",
+    "description": "Monetize your online content with relevant ads from Google's network.",
+    "icon": "BadgeDollarSign",
+    "category": "Advertising",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/monetization/advertising"
+  },
+    {
+    "id": "carbon-ads",
+    "name": "Carbon Ads",
+    "description": "High-quality, ethical advertising for the design and development community.",
+    "icon": "BadgeDollarSign",
+    "category": "Advertising",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/monetization/advertising"
+  },
+  {
+    "id": "adthrive",
+    "name": "AdThrive",
+    "description": "Full-service ad management for premium publishers seeking to maximize revenue.",
+    "icon": "BadgeDollarSign",
+    "category": "Advertising",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/monetization/advertising"
+  },
+  {
+    "id": "adsterra",
+    "name": "Adsterra",
+    "description": "A global advertising network with a unique partner care approach.",
+    "icon": "BadgeDollarSign",
+    "category": "Advertising",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/monetization/advertising"
+  },
+  {
+    "id": "paywall-feature",
+    "name": "Content Paywall",
+    "description": "Require readers to pay for specific articles after viewing a certain number of free posts.",
+    "icon": "Lock",
+    "category": "Monetization",
+    "connected": false,
+    "enabled": false,
+    "managementUrl": "/admin/paywall"
+  }
+]

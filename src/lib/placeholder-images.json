@@ -1,0 +1,152 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "avatar1",
+      "description": "User avatar 1",
+      "url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE1NDUzOTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "person portrait"
+    },
+    {
+      "id": "avatar2",
+      "description": "User avatar 2",
+      "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMGZhY2V8ZW58MHx8fHwxNzYxNTAxMDIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "woman face"
+    },
+    {
+      "id": "avatar3",
+      "description": "User avatar 3",
+      "url": "https://images.unsplash.com/photo-1725866546799-4cc16f6cba23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBzbWlsaW5nfGVufDB8fHx8MTc2MTQ2NjAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "man smiling"
+    },
+    {
+      "id": "post1",
+      "description": "Abstract architecture",
+      "url": "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjE1NzY3MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "abstract architecture"
+    },
+    {
+      "id": "post2",
+      "description": "Mountain landscape",
+      "url": "https://images.unsplash.com/photo-1610892415063-d89a504ce049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtb3VudGFpbiUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjE1Nzk0NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "mountain landscape"
+    },
+    {
+      "id": "post3",
+      "description": "City at night",
+      "url": "https://images.unsplash.com/photo-1708474660686-7a00a0ffe4ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaXR5JTIwbmlnaHR8ZW58MHx8fHwxNzYxNDc1NzE0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "city night"
+    },
+    {
+      "id": "post4",
+      "description": "Minimalist desk setup",
+      "url": "https://images.unsplash.com/photo-1644337540803-2b2fb3cebf12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWluaW1hbGlzdCUyMGRlc2t8ZW58MHx8fHwxNzYxNTcwMDU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "minimalist desk"
+    },
+    {
+      "id": "post5",
+      "description": "Fresh coffee beans",
+      "url": "https://images.unsplash.com/photo-1690983326555-8b8e27843a32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjb2ZmZWUlMjBiZWFuc3xlbnwwfHx8fDE3NjE0ODAyMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "coffee beans"
+    },
+    {
+      "id": "post6",
+      "description": "Home office setup",
+      "url": "https://images.unsplash.com/photo-1591382696684-38c427c7547a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxob21lJTIwb2ZmaWNlfGVufDB8fHx8MTc2MTc3MDI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "home office"
+    },
+    {
+      "id": "post7",
+      "description": "Code on a screen",
+      "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2RlJTIwc2NyZWVufGVufDB8fHx8MTc2MTc3MDMwMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "code screen"
+    },
+    {
+      "id": "post8",
+      "description": "Healthy food bowl",
+      "url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwZm9vZHxlbnwwfHx8fDE3NjE3NzAzMTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "healthy food"
+    },
+    {
+      "id": "post9",
+      "description": "Stoic statue bust",
+      "url": "https://images.unsplash.com/photo-1679963283259-99a31a938645?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdG9pYyUyMHN0YXR1ZXxlbnwwfHx8fDE3NjE3NzAzNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "stoic statue"
+    },
+    {
+      "id": "post10",
+      "description": "Camera on a tripod",
+      "url": "https://images.unsplash.com/photo-1498661646736-9653909772b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYW1lcmElMjB0cmlwb2R8ZW58MHx8fHwxNzYxNzcwMzk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "camera tripod"
+    },
+    {
+      "id": "media-1",
+      "description": "Abstract colorful background",
+      "url": "https://images.unsplash.com/photo-1563089145-599997674d42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjBjb2xvcnxlbnwwfHx8fDE3NjE1NDg0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "abstract color"
+    },
+    {
+      "id": "media-2",
+      "description": "Office workspace",
+      "url": "https://images.unsplash.com/photo-1583593687341-04ea577f0550?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxvZmZpY2UlMjB3b3Jrc3BhY2V8ZW58MHx8fHwxNzYxNTQ4NDg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "office workspace"
+    },
+    {
+      "id": "media-3",
+      "description": "Person writing in a notebook",
+      "url": "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3cml0aW5nJTIwbm90ZWJvb2t8ZW58MHx8fHwxNzYxNTQwMTIyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "writing notebook"
+    },
+    {
+      "id": "media-4",
+      "description": "Modern city skyline",
+      "url": "https://images.unsplash.com/photo-1502905704466-2690947baeee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaXR5JTIwc2t5bGluZXxlbnwwfHx8fDE3NjE0NjMxNTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "city skyline"
+    },
+    {
+      "id": "media-5",
+      "description": "Close-up of a camera lens",
+      "url": "https://images.unsplash.com/photo-1593704212686-6d52058fb516?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjYW1lcmElMjBsZW5zfGVufDB8fHx8MTc2MTUwMzM0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "camera lens"
+    },
+    {
+      "id": "media-6",
+      "description": "Laptop on a wooden table",
+      "url": "https://images.unsplash.com/photo-1692808712359-0a4980d00b3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsYXB0b3AlMjB0YWJsZXxlbnwwfHx8fDE3NjE1Mjc0MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "type": "image",
+      "hint": "laptop table"
+    },
+    {
+      "id": "media-7",
+      "description": "Short nature video clip",
+      "url": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "type": "video",
+      "hint": "nature video"
+    },
+    {
+      "id": "media-8",
+      "description": "Sample audio track",
+      "url": "https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "type": "audio",
+      "hint": "audio music"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Helper Functions ---
+
+    // Is the user authenticated?
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Does the user have the 'Admin' role in their user document?
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.filter(role => role.name == 'Admin').size() > 0;
+    }
+
+    // --- Collection Rules ---
+
+    // User profiles
+    match /users/{userId} {
+      // Publicly readable for author pages and link-in-bio pages.
+      allow read: if true;
+      // Users can update their own profiles (name, bio, following, reading list). Admins can update any profile.
+      allow update: if (request.auth.uid == userId && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'linkInBio', 'followingAuthors', 'followingTags', 'readingList'])) || isAdmin() || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['badges']));
+      // Users can delete their own accounts, or an admin can delete any account.
+      allow delete: if request.auth.uid == userId || isAdmin();
+      // Users are created during signup.
+      allow create: if request.auth.uid == userId;
+    }
+
+    // Blog posts
+    match /posts/{postId} {
+      // Public can read published posts. Admins can read any post.
+      allow read: if resource.data.status == 'Published' || isAdmin();
+      // Any user (including guests) can update the 'likes' and 'views' count. Admins can do full updates.
+      allow update: if (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'comments', 'views'])) || isAdmin();
+      // Only admins can create or delete posts.
+      allow create, delete: if isAdmin();
+    }
+
+    // Categories
+    match /categories/{categoryId} {
+      // Publicly readable for post display.
+      allow read: if true;
+      // Only admins can manage categories.
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Comments
+    match /comments/{commentId} {
+      // Public can read approved comments. Admins/authors can read their own pending comments.
+      allow read: if resource.data.status == 'Approved' || (isSignedIn() && (request.auth.uid == resource.data.authorId || isAdmin()));
+      // Anyone can create a comment.
+      allow create: if true;
+      // Admin can update status (for AI moderation). Author can update their own comment. Any user can update likes.
+      allow update: if isAdmin() || (isSignedIn() && request.auth.uid == resource.data.authorId) || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes']));
+      // Only the author or an admin can manage the comment.
+      allow delete: if (isSignedIn() && request.auth.uid == resource.data.authorId) || isAdmin();
+    }
+    
+    // Tips
+    match /tips/{tipId} {
+      // Readers can create tips
+      allow create: if isSignedIn();
+      // Authors can read tips they've received, admins can read all tips.
+      allow read: if (isSignedIn() && resource.data.authorId == request.auth.uid) || isAdmin();
+      // Not editable or deletable by clients
+      allow update, delete: if false;
+    }
+
+    // Media library assets
+    match /media/{mediaId} {
+      // Admin-only access. Public access is via storage URLs, not direct DB reads.
+      allow read, write: if isAdmin();
+    }
+
+    // Site-wide settings
+    match /settings/site {
+      // Publicly readable for theming, banner content, etc.
+      allow read: if true;
+      // Only admins can change site settings.
+      allow write: if isAdmin();
+    }
+
+    // Subscriber list for newsletters
+    match /subscribers/{subscriberId} {
+      // Anyone can add their email.
+      allow create: if true;
+      // Only admins can view the subscriber list.
+      allow read, delete: if isAdmin();
+    }
+
+    // User subscriptions (premium access)
+    match /subscriptions/{subId} {
+      // Only the user or an admin can view/manage a subscription.
+      allow read, write: if isSignedIn() && (request.auth.uid == resource.data.userId || isAdmin());
+    }
+
+    // Invoices
+    match /invoices/{invoiceId} {
+        // Only the user who owns the invoice or an admin can access it.
+        allow read, write: if (isSignedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+        // Users should be able to delete their own invoices.
+        allow delete: if (isSignedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+    }
+
+    // Partnership inquiries
+    match /inquiries/{inquiryId} {
+      // Inquiries are not publicly readable. Admins can read all.
+      allow read: if isAdmin();
+      // Anyone can submit an inquiry form.
+      allow create: if true;
+      // Only admins can update/delete inquiries.
+      allow update, delete: if isAdmin();
+    }
+
+    // Polls
+    match /polls/{pollId} {
+      // Publicly readable to display on the site.
+      allow read: if true;
+      // Any user (including guests) can update (vote) by changing 'options' and 'totalVotes'.
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['options', 'totalVotes']);
+      // Only admins can create or delete polls.
+      allow create, delete: if isAdmin();
+    }
+    
+    // Community events
+    match /events/{eventId} {
+      // Publicly readable to display in the community hub.
+      allow read: if true;
+      // Only admins can create or manage events.
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // Notifications (for user feeds)
+    match /notifications/{notificationId} {
+      // Readable by any signed-in user to populate their feed.
+      allow read: if isSignedIn();
+      // Only admins can write notifications (e.g., a system that creates them when a post is published).
+      allow write: if isAdmin();
+    }
+    
+    // Supporters
+    match /supporters/{supporterId} {
+      // Publicly readable for display on the site.
+      allow read: if true;
+      // Only admins can manage supporters.
+      allow create, update, delete: if isAdmin();
+    }
+
+
+    // --- Admin-Only Collections ---
+
+    // App Integrations
+    match /integrations/{integrationId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Affiliate Links
+    match /affiliateLinks/{linkId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Backups
+    match /backups/{backupId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Sponsored Surveys
+    match /surveys/{surveyId} {
+      // Readable if available to show on site. Admins can read all.
+      allow read: if resource.data.status == 'Available' || isAdmin();
+      // Only admins can manage surveys.
+      allow write: if isAdmin();
+    }
+  }
+}
