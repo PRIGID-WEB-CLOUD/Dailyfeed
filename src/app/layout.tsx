@@ -79,7 +79,9 @@ function AppProviders({ children }: { children: ReactNode }) {
     setIsClient(true);
   }, []);
 
-  const showLoader = isClient && (isAdminLoading || isPublicLoading);
+  // Admin routes only need the admin auth check. Waiting for the public
+  // profile listener here can blank the entire admin app if that stream fails.
+  const showLoader = isClient && (isAdminPage ? isAdminLoading : isPublicLoading);
 
   if (showLoader) {
     return (

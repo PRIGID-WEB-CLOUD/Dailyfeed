@@ -35,32 +35,49 @@ export function PublicSubscriptionProvider({ children }: { children: ReactNode }
     }
     setAnonymousId(anonId);
     
-    const unsubscribeAuth = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        // When auth state changes, set up a real-time listener for the user's profile document.
-        // This ensures the user object in the app stays in sync with Firestore.
-        const userDocRef = doc(db, "users", firebaseUser.uid);
-        const unsubscribeProfile = onSnapshot(userDocRef, (doc) => {
-          if (doc.exists()) {
-            setUserState({ id: doc.id, ...doc.data() } as User);
-          } else {
-            // This case might happen if the user record is deleted but auth session persists.
-            setUserState(null);
-          }
-          setIsLoading(false);
-        });
+    let unsubscribeProfile: (() => void) | undefined;
 
-        // Return the unsubscribe function for the profile listener
-        return () => unsubscribeProfile();
-      } else {
-        // No user is logged in
+    const unsubscribeAuth = onAuthStateChanged(auth, async (firebaseUser) => {
+      unsubscribeProfile?.();
+      unsubscribeProfile = undefined;
+
+      try {
+        if (firebaseUser) {
+          // Keep the public profile in sync, but always release the loading
+          // state if Firestore rejects or loses the listener.
+          const userDocRef = doc(db, "users", firebaseUser.uid);
+          unsubscribeProfile = onSnapshot(
+            userDocRef,
+            (profileSnapshot) => {
+              if (profileSnapshot.exists()) {
+                setUserState({ id: profileSnapshot.id, ...profileSnapshot.data() } as User);
+              } else {
+                setUserState(null);
+              }
+              setIsLoading(false);
+            },
+            (error) => {
+              console.error('Firebase public profile error:', error);
+              setUserState(null);
+              setIsLoading(false);
+            }
+          );
+        } else {
+          setUserState(null);
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('Firebase public auth error:', error);
         setUserState(null);
         setIsLoading(false);
       }
     });
 
     // Return the unsubscribe function for the auth listener
-    return () => unsubscribeAuth();
+    return () => {
+      unsubscribeProfile?.();
+      unsubscribeAuth();
+    };
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
