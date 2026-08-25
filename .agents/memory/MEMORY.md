@@ -1,0 +1,1 @@
+- [Package install firewall](package-install-firewall.md) — blocked vulnerable tarballs may need narrow npm overrides to newer compatible releases.
