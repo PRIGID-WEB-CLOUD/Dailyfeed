@@ -51,9 +51,9 @@ export default function ProtectedAdminLayout({ children }: { children: ReactNode
                 <Nav />
                 <SidebarRail />
               </Sidebar>
-              <SidebarInset className="min-w-0 overflow-x-hidden">
+              <SidebarInset className="w-0 min-w-0 max-w-full flex-1 overflow-x-hidden">
                 <Header user={user} onLogout={handleLogout} />
-                <main className="min-w-0 flex-1 overflow-x-hidden p-3 sm:p-6">{children}</main>
+                <main className="w-full min-w-0 max-w-full flex-1 overflow-x-hidden p-3 sm:p-6">{children}</main>
               </SidebarInset>
             </div>
           </SidebarProvider>

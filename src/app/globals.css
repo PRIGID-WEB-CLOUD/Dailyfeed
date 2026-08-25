@@ -75,6 +75,9 @@
   
   /* Admin Dark Theme */
   .admin-dark {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
     --background: 220 15% 10%;
     --foreground: 210 40% 98%;
     --card: 220 15% 12%;
