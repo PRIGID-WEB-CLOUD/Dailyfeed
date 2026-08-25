@@ -25,21 +25,34 @@ export function AdminSubscriptionProvider({ children }: { children: ReactNode })
   useEffect(() => {
     // Listen for auth state changes on the dedicated admin auth instance
     const unsubscribe = onAuthStateChanged(adminAuth, async (firebaseUser) => {
-      if (firebaseUser) {
-        const userProfile = await getUserProfile(firebaseUser.uid);
-        const allowedRoles = ['Admin', 'Editor', 'Author'];
-        // Check if the user has an allowed role
-        if (userProfile && userProfile.roles.some(role => allowedRoles.includes(role.name))) {
-          setUserState(userProfile);
+      try {
+        if (firebaseUser) {
+          const userProfile = await getUserProfile(firebaseUser.uid);
+          const allowedRoles = ['Admin', 'Editor', 'Author'];
+          // Check if the user has an allowed role
+          if (userProfile && userProfile.roles?.some(role => allowedRoles.includes(role.name))) {
+            setUserState(userProfile);
+          } else {
+            // User is authenticated but not an authorized admin/editor/author, so sign them out of the admin context
+            await firebaseSignOut(adminAuth);
+            setUserState(null);
+          }
         } else {
-          // User is authenticated but not an authorized admin/editor/author, so sign them out of the admin context
-          await firebaseSignOut(adminAuth);
           setUserState(null);
         }
-      } else {
+      } catch (error) {
+        // A failed profile lookup (for example, a Firestore permission error)
+        // must not leave the whole app stuck in its loading state.
+        console.error('Firebase admin profile error:', error);
         setUserState(null);
+        try {
+          await firebaseSignOut(adminAuth);
+        } catch (signOutError) {
+          console.error('Firebase admin sign-out error:', signOutError);
+        }
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     });
 
     return () => unsubscribe();
