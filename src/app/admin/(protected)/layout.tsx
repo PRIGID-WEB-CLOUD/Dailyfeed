@@ -46,14 +46,14 @@ export default function ProtectedAdminLayout({ children }: { children: ReactNode
       <SettingsProvider>
         <BannerProvider>
           <SidebarProvider>
-            <div className="flex h-screen admin-dark">
+            <div className="flex h-screen min-w-0 admin-dark">
               <Sidebar>
                 <Nav />
                 <SidebarRail />
               </Sidebar>
-              <SidebarInset>
+              <SidebarInset className="min-w-0 overflow-x-hidden">
                 <Header user={user} onLogout={handleLogout} />
-                <main className="flex-1 p-6">{children}</main>
+                <main className="min-w-0 flex-1 overflow-x-hidden p-3 sm:p-6">{children}</main>
               </SidebarInset>
             </div>
           </SidebarProvider>
