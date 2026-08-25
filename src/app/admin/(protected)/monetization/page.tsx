@@ -40,7 +40,7 @@ export default function MonetizationPage() {
         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {paywallIntegration && (
                <Card className="flex flex-col">
-                  <CardHeader className="flex-row items-start gap-4">
+                  <CardHeader className="flex-col items-start gap-3 sm:flex-row sm:gap-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 flex items-center justify-center bg-secondary rounded-lg">
                         <Lock className="w-6 h-6 text-secondary-foreground" />

@@ -120,7 +120,7 @@ export default function CategoriesPage() {
           <CardContent>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="flex items-end gap-2">
+                <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-end">
                     <FormField
                     control={form.control}
                     name="name"
@@ -134,7 +134,7 @@ export default function CategoriesPage() {
                         </FormItem>
                     )}
                     />
-                     <div className="flex gap-2">
+                      <div className="flex gap-2 sm:shrink-0">
                         {editingCategory && (
                             <Button type="button" variant="outline" onClick={() => { setEditingCategory(null); form.reset(); }}>Cancel</Button>
                         )}

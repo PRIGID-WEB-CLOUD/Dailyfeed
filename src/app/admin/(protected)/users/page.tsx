@@ -201,8 +201,8 @@ export default function UsersPage() {
   return (
     <>
       <Card className="w-full">
-        <CardHeader className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div>
+        <CardHeader className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div className="min-w-0">
                 <CardTitle>User Management</CardTitle>
                 <CardDescription>
                 Manage all public-facing user profiles, roles, and permissions.
@@ -233,14 +233,14 @@ export default function UsersPage() {
                 return (
                 <TableRow key={user.id}>
                   <TableCell>
-                    <div className="flex items-center gap-4">
+                    <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                       <Avatar className="h-10 w-10">
                         <AvatarImage src={avatarImage?.url} alt={user.name} data-ai-hint={avatarImage?.hint} />
                         <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                       </Avatar>
-                      <div>
+                      <div className="min-w-0">
                         <div className="font-medium">{user.name}</div>
-                        <div className="text-sm text-muted-foreground">{user.email}</div>
+                        <div className="break-all text-sm text-muted-foreground sm:break-normal">{user.email}</div>
                       </div>
                     </div>
                   </TableCell>

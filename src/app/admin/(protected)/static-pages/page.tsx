@@ -189,7 +189,7 @@ export default function StaticPagesPage() {
                 <AccordionContent>
                     <div className="space-y-4">
                         {fields.map((field, index) => (
-                             <div key={field.id} className="flex items-end gap-2 p-4 border rounded-lg bg-muted/50">
+                             <div key={field.id} className="flex flex-col items-stretch gap-2 rounded-lg border bg-muted/50 p-4 sm:flex-row sm:items-end">
                                 <FormField
                                     control={form.control}
                                     name={`socialLinks.${index}.platform`}

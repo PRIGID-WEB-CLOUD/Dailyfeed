@@ -133,7 +133,7 @@ export default function SubscribersPage() {
 
   return (
     <>
-      <div className="space-y-6">
+      <div className="min-w-0 space-y-4 sm:space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>Subscribers</CardTitle>
@@ -167,16 +167,16 @@ export default function SubscribersPage() {
           </CardContent>
         </Card>
          <Card>
-          <CardHeader className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div>
+          <CardHeader className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <div className="min-w-0">
               <CardTitle>Subscriber Management</CardTitle>
                <CardDescription>
                 View and manage your subscriber list.
               </CardDescription>
             </div>
-             <div className="flex gap-4">
-              <Button variant="outline">Import</Button>
-              <Button onClick={() => setAddDialogOpen(true)}>
+             <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:gap-4">
+              <Button variant="outline" className="w-full sm:w-auto">Import</Button>
+              <Button onClick={() => setAddDialogOpen(true)} className="w-full sm:w-auto">
                 <PlusCircle className="mr-2 h-4 w-4" />
                 Add Subscriber
               </Button>
@@ -195,7 +195,7 @@ export default function SubscribersPage() {
                     <TableRow><TableCell colSpan={2} className="text-center h-24"><Loader2 className="animate-spin h-8 w-8 text-primary mx-auto" /></TableCell></TableRow>
                 ) : paginatedSubscribers.length > 0 ? paginatedSubscribers.map((subscriber) => (
                   <TableRow key={subscriber.id}>
-                    <TableCell className="font-medium">{subscriber.email}</TableCell>
+                    <TableCell className="break-all font-medium sm:break-normal">{subscriber.email}</TableCell>
                     <TableCell className="text-right hidden sm:table-cell">
                       {format(subscriber.subscribedAt.toDate(), 'MMMM dd, yyyy')}
                     </TableCell>
@@ -210,8 +210,8 @@ export default function SubscribersPage() {
               </TableBody>
             </Table>
           </CardContent>
-           <CardFooter className="flex flex-col-reverse sm:flex-row items-center sm:justify-between gap-4">
-            <div className="text-xs text-muted-foreground">
+           <CardFooter className="flex flex-col-reverse items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+             <div className="w-full text-center text-xs text-muted-foreground sm:w-auto sm:text-left">
               Showing <strong>{(currentPage - 1) * itemsPerPage + 1}-{(currentPage - 1) * itemsPerPage + paginatedSubscribers.length}</strong> of <strong>{subscribers.length}</strong> subscribers.
             </div>
             {renderPagination()}
